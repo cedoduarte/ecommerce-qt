@@ -1,0 +1,31 @@
+# Compiled files
+*.o
+*.obj
+*.moc
+*.rcc
+*.qm
+*.qm.cxx
+*.pro.user
+*.pro.user.*
+*.pro.user.*
+*.qmake.stash
+moc_*
+ui_*
+
+# Build directories
+CMakeFiles/
+
+# Ignore generated Makefiles and build scripts
+Makefile
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+
+# Ignore Qt-specific files
+*.pro.user
+*.pro.user.*
+*.pro.user.*
+CMakeLists.txt.user
+*.qmake.stash
