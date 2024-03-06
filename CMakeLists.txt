@@ -34,9 +34,14 @@ set(PROJECT_SOURCES
         shared/constants.h
         shared/constants.cpp
         shared/interfaces.h
+        shared/interfaces.cpp
         shared/store.h
         shared/store.cpp
+
+        res.qrc
 )
+
+qt_add_resources(PROJECT_SOURCES res.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ecommerce-qt

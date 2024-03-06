@@ -7,6 +7,7 @@ class IBase
 {
 public:
     virtual QByteArray toJson() const = 0;
+    virtual void fromJson(const QByteArray &json) = 0;
 };
 
 class IUserViewModel : public IBase
@@ -29,44 +30,8 @@ public:
     QString createdDate;
     bool isDeleted;
 
-    QByteArray toJson() const override
-    {
-        return QString("{"
-            "\"id\": %1,"
-            "\"firstName\": \"%2\","
-            "\"lastName\": \"%3\","
-            "\"email\": \"%4\","
-            "\"username\": \"%5\","
-            "\"passwordHash\": \"%6\","
-            "\"phoneNumber\": \"%7\","
-            "\"birthdate\": \"%8\","
-            "\"country\": \"%9\","
-            "\"province\": \"%10\","
-            "\"city\": \"%11\","
-            "\"zipCode\": \"%12\","
-            "\"type\": %13,"
-            "\"lastModified\": \"%14\","
-            "\"createdDate\": \"%15\","
-            "\"isDeleted\": \"%16\""
-        "}"
-        ).arg(id)
-         .arg(firstName)
-         .arg(lastName)
-         .arg(email)
-         .arg(username)
-         .arg(passwordHash)
-         .arg(phoneNumber)
-         .arg(birthdate)
-         .arg(country)
-         .arg(province)
-         .arg(city)
-         .arg(zipCode)
-         .arg(type)
-         .arg(lastModified)
-         .arg(createdDate)
-         .arg(isDeleted)
-         .toLatin1();
-    }
+    QByteArray toJson() const override;
+    void fromJson(const QByteArray &json) override;
 };
 
 class SigninUserRequest : public IBase
@@ -75,14 +40,8 @@ public:
     QString usernameOrEmail;
     QString password;
 
-    QByteArray toJson() const override
-    {
-        return QString("{"
-            "\"usernameOrEmail\": \"%1\","
-            "\"password\": \"%2\""
-        "}"
-        ).arg(usernameOrEmail, password).toLatin1();
-    }
+    QByteArray toJson() const override;
+    void fromJson(const QByteArray &json) override;
 };
 
 #endif // INTERFACES_H

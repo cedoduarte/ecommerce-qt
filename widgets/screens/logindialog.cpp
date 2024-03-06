@@ -44,31 +44,15 @@ void LoginDialog::handleResponse(QNetworkReply *reply)
 {
     if (reply->error() == QNetworkReply::NoError)
     {
-        QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
-        QJsonObject user = doc.object();
-        Store::currentUser.id = user["id"].toInt();
-        Store::currentUser.firstName = user["firstName"].toString();
-        Store::currentUser.lastName = user["lastName"].toString();
-        Store::currentUser.email = user["email"].toString();
-        Store::currentUser.username = user["username"].toString();
-        Store::currentUser.passwordHash = user["passwordHash"].toString();
-        Store::currentUser.phoneNumber = user["phoneNumber"].toString();
-        Store::currentUser.birthdate = user["birthdate"].toString();
-        Store::currentUser.country = user["country"].toString();
-        Store::currentUser.province = user["province"].toString();
-        Store::currentUser.city = user["city"].toString();
-        Store::currentUser.zipCode = user["zipCode"].toString();
-        Store::currentUser.type = user["type"].toInt();
-        Store::currentUser.lastModified = user["lastModified"].toString();
-        Store::currentUser.createdDate = user["createdDate"].toString();
-        Store::currentUser.isDeleted = user["isDeleted"].toBool();
+        Store::currentUser.fromJson(reply->readAll());
         accept();
         qDebug() << Store::currentUser.username;
     }
     else
     {
         QString errorString = QString::fromLatin1(reply->readAll());
-        QMessageBox::critical(this, "Error", errorString.mid(18, errorString.indexOf("!") + 1));
+        errorString = errorString.mid(18, errorString.indexOf("!") - 17);
+        QMessageBox::critical(this, "Error", errorString);
     }
 }
 

@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Sign in</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../res.qrc">
+    <normaloff>:/assets/img/login.png</normaloff>:/assets/img/login.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0" colspan="4">
@@ -60,12 +64,20 @@
      <property name="text">
       <string>OK</string>
      </property>
+     <property name="icon">
+      <iconset resource="../../res.qrc">
+       <normaloff>:/assets/img/ok.png</normaloff>:/assets/img/ok.png</iconset>
+     </property>
     </widget>
    </item>
    <item row="1" column="2">
     <widget class="QPushButton" name="quitButton">
      <property name="text">
       <string>Quit</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../res.qrc">
+       <normaloff>:/assets/img/cancel.png</normaloff>:/assets/img/cancel.png</iconset>
      </property>
     </widget>
    </item>
@@ -84,6 +96,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../res.qrc"/>
+ </resources>
  <connections/>
 </ui>
